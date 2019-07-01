@@ -1,4 +1,6 @@
 // 'use strict'
+
+// refer XT nagabhushanam
 console.log("Welcome to developer tools!!");
 
 // 6 values considered false in JS NULL,Empty String,False,Nan,undefined,0
@@ -84,7 +86,15 @@ var person3 = {
     1: "one",
     100: "hundred"
 };
-console.log(person1.name);
-console.log(person2['home-addr']);
-console.log(person3["1"]);
-console.log(person3[100]);
+// console.log(person1.name);
+// console.log(person2['home-addr']);
+// console.log(person3["1"]);
+// console.log(person3[100]);
+var v = 12;
+let a = 13; // let provides block level scope ,avoids redeclaration
+
+/*
+    ==> use 'let' keyword, for mutable reference variable
+    ==> use 'const' keyword, for immutable reference variables
+    ==> try to avoid 'var' keyword, for better code
+*/
