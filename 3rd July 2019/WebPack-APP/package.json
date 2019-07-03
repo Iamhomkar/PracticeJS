@@ -1,0 +1,23 @@
+{
+  "name": "hotels",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/app.js",
+  "scripts": {
+    "start": "node_modules/.bin/webpack-dev-server --config webpack.config.js",
+    "build": "node_modules/.bin/webpack --config webpack.config.prod.js"
+  },
+  "author": "Omkar-Halikar",
+  "license": "ISC",
+  "devDependencies": {
+    "css-loader": "^3.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.35.2",
+    "webpack-cli": "^3.3.5",
+    "webpack-dev-server": "^3.7.2"
+  },
+  "dependencies": {
+    "bootstrap": "^4.3.1"
+  }
+}
