@@ -1,0 +1,13 @@
+<div>
+  <app-navbar [title]="title"></app-navbar>
+  <div class="container">
+    <hr/>
+      <app-cart-badge [value]="cartQty" (cartVisibility)="displayCart($event)"></app-cart-badge>
+    <hr/>
+      <app-cart-view *ngIf="cartVisibility" [cart]="cart"></app-cart-view> 
+    <hr/>
+      <app-item  *ngFor="let item of items;let idx=index" [value]="item"  
+      (buy)="addToCart($event)" [cartQty]="cart[item.id]?.qty"> <!-- class="list-group-item" -->
+      </app-item>
+  </div>
+</div>
