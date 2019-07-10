@@ -14,14 +14,10 @@ import org.springframework.data.domain.Sort;
 import com.example.demo.model.Todo;
 import com.example.demo.repository.TodoRepository;
 
-@SpringBootApplication(scanBasePackages={ "com.example.demo.model", "com.example.demo.repository","com.example.demo.controller"})
+@SpringBootApplication
 public class TodoAppBackendApplication {
-
-//	@Autowired
-//	static TodoRepository todoRepository;
 	public static void main(String[] args) {
 		SpringApplication.run(TodoAppBackendApplication.class, args);
-//		todoRepository.save((new Todo(1,"new Todo")));
 	}
 
 }

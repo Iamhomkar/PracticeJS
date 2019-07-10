@@ -3,6 +3,8 @@ package com.example.demo.model;
 import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -11,6 +13,7 @@ import javax.persistence.Table;
 public class Todo {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int id;
 	private String title;
 	private boolean completed;
@@ -21,11 +24,15 @@ public class Todo {
 		return "Todo [id=" + id + ", title=" + title + ", completed=" + completed + ", creationTime=" + creationTime+ "]";
 	}
 
-	public Todo(int id, String title) {
+	public Todo() {
+	}
+
+	public Todo(String title) {
 		super();
-		this.id = id;
+//		this.id = id;
 		this.title = title;
 		this.creationTime = LocalDateTime.now(); // Asia/Kolkata
+		System.out.println("the local date time is "+LocalDateTime.now());
 	}
 
 	public int getId() {
@@ -51,4 +58,13 @@ public class Todo {
 	public LocalDateTime getCreationTime() {
 		return creationTime;
 	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setCreationTime(LocalDateTime creationTime) {
+		this.creationTime = creationTime;
+	}
+	
 }

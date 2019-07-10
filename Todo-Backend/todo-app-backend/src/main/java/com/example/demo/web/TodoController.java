@@ -1,5 +1,6 @@
 package com.example.demo.web;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,30 +12,39 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.Todo;
 import com.example.demo.repository.TodoRepository;
 
 
-//@CrossOrigin(origins= {"*"})
-//@RestController
+@CrossOrigin(origins= {"*"})
+@RestController
 //@RequestMapping("/")
-@Controller
+//@Controller
 public class TodoController {
 	
 	@Autowired
 	private TodoRepository todoRepository;
 	
 //	@RequestMapping(value="/gettodo",method=RequestMethod.GET)
-	@GetMapping(value = "/todo")
+	@GetMapping(value = "/getAllTodo")
 	public List<Todo> getAll() {
 		System.out.println("here");
 		return todoRepository.findAll(); 
 	}
-	@RequestMapping(value="/todo",method=RequestMethod.POST,produces = "application/json",consumes = "application/json")
+	@RequestMapping(value="/addNewTodo",method=RequestMethod.POST,produces = "application/json",consumes = "application/json")
 	public ResponseEntity<?> addNewTodo(@RequestBody Todo todo) {
+		todo.setCreationTime(LocalDateTime.now());
 		todo=todoRepository.save(todo);
 		ResponseEntity<Todo> responseEntity=new ResponseEntity<Todo>(todo, HttpStatus.CREATED);
 		return responseEntity;
+	}
+	
+	@RequestMapping(value="/getdata.htm",method=RequestMethod.GET)
+	public @ResponseBody String getData()
+	{
+		return "Well Done";
 	}
 }
