@@ -1,0 +1,9 @@
+<div class=" shadow m-2 p-3 rounded">
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Add new Todo" value={{todo}}>
+        <div class="input-group-append">
+            <button class="btn btn-dark disabled fa fa-trash" type="button" (click)="removeTodo()"></button>
+            <button class="btn btn-dark disabled fa fa-check" type="button"></button>
+        </div>
+    </div>
+</div>
