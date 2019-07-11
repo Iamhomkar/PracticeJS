@@ -15,7 +15,10 @@ export class TodoComponent implements OnInit {
   ngOnInit() {
   }
   removeTodo(){
-    console.log("removing "+this.todo);
-    this.todoCreationService.removeTodo(this.todo);
+    this.todoCreationService.removeTodo(this.todo.id);
+  }
+  markCompleted(){
+    this.todo.completed=true;
+    this.todoCreationService.updateStatus(this.todo.id);
   }
 }

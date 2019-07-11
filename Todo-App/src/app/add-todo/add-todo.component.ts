@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl,FormGroup } from '@angular/forms';
 import { TodoCreationService } from '../todo-creation.service'
+import { FilteringService } from '../filtering.service';
 
 @Component({
   selector: 'app-add-todo',
@@ -9,21 +10,32 @@ import { TodoCreationService } from '../todo-creation.service'
 })
 export class AddTodoComponent implements OnInit {
 
+  public isCollapsed = true;
+  order="asc"
   todoInput= new FormControl('');
-  constructor(private todoCreationService:TodoCreationService) { }
-  todoCount=0;
+  constructor(private todoCreationService:TodoCreationService,private filteringService:FilteringService) { }
   ngOnInit() {
-    this.todoInput.setValue("Enter new Todo Here");
     this.todoCreationService.getTodoStream()
     .subscribe(e=>{
-      this.todoCount=e.todos.length;
-    })
+    });
   }
   
   todoCreation(){
-    console.log(this.todoInput.value);
-    this.todoCount=this.todoCreationService.addToList(this.todoInput.value);
+    if(this.todoInput.value.length)
+    {
+      console.log(this.todoInput.value);
+      this.todoCreationService.addToList(this.todoInput.value);
+    }
   }
 
-  
+  filter(prop){
+    if(this.order==="asc")
+    {
+      this.order="desc";
+    }else
+    {
+      this.order="asc"
+    }
+    this.filteringService.setFilterProps(prop,this.order)
+  }  
 }

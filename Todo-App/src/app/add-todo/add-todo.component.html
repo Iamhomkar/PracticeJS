@@ -1,12 +1,27 @@
 <div class="container">
-    <div class="input-group mb-3 formGroup">
+    <div class="input-group mb-3">
         <div class="input-group-prepend" id="button-addon3">
-            <button class="btn btn-dark disabled" type="button">{{todoCount}}</button>
-            <button class="btn btn-outline-dark rounded" type="button">Complete All</button>
+            <button title="Complete All" class="btn btn-outline-dark rounded fa fa-check" type="button"></button>
         </div>
         <input type="text" class="form-control" placeholder="Add new Todo" [formControl]="todoInput">
         <div class="input-group-append">
-            <button class="btn btn-outline-dark rounded" type="button" (click)="todoCreation($event)">Create New</button>
+            <button class="btn btn-outline-dark rounded" type="button" (click)="todoCreation($event)">Create
+                New</button>
+            <!-- <button class="btn btn-dark disabled fa fa-filter" type="button" title="Filter" data-toggle="collapse"
+            data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"></button> -->
+
+            <button type="button" class="btn btn-dark fa fa-filter" title="Filter" (click)="isCollapsed = !isCollapsed"
+                [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample"></button>
+        </div>
+    </div>
+    <div class="collapse row" id="collapseExample" [ngbCollapse]="isCollapsed">
+        <div class="container">
+            <!-- <div class="col-8"></div> -->
+            <div class="btn-group float-right">
+                <button class="btn btn-secondary btn-lg rounded m-3 pl-3 pr-3" (click)="filter('title')">A-Z</button>
+                <button class="btn btn-secondary btn-lg rounded m-3 pl-3 pr-3" (click)="filter('id')">Id</button>
+                <button class="btn btn-secondary btn-lg rounded m-3 pl-3 pr-3 fa fa-check"></button>
+            </div>
         </div>
     </div>
 </div>
